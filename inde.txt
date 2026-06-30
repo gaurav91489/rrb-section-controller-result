@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RRB Section Controller Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>RRB Section Controller Result</h1>
+  <p>Check DV Shortlist Status (CEN 04/2025)</p>
+
+  <form id="result-checker-form">
+
+    <input type="text" id="input-name" placeholder="Full Name" required>
+    <input type="tel" id="input-mobile" placeholder="Mobile Number" maxlength="10" required>
+
+    <select id="select-zone" required>
+      <option value="">Select Zone</option>
+      <option>Ajmer</option>
+      <option>Allahabad</option>
+      <option>Mumbai</option>
+      <option>Patna</option>
+    </select>
+
+    <input type="text" id="input-roll" placeholder="16-digit Roll Number" maxlength="16" required>
+
+    <button type="submit">Check Result</button>
+
+  </form>
+
+  <div id="result-box"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
