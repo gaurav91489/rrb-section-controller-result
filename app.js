@@ -1,7 +1,4 @@
-// ===============================
-// ✅ QUALIFIED ROLL NUMBERS
-// ===============================
-const qualifiedRollNumbers = [
+const validRollNumbers = [
 "12425112268249","12425112269669","12425113224018","12425117197703","12425117268381",
 "12425212267124","12425212271681","12425212274729","12425215271879","12425217221637",
 "12425217257257","12425217259023","12425312251643","12425312325922","12425329265282",
@@ -11,70 +8,30 @@ const qualifiedRollNumbers = [
 "12425513264786","12425513265193"
 ];
 
-// ===============================
-const form = document.getElementById("result-checker-form");
-const resultBox = document.getElementById("result-box");
+function checkResult() {
+  const name = document.getElementById("name").value;
+  const mobile = document.getElementById("mobile").value;
+  const zone = document.getElementById("zone").value;
+  const roll = document.getElementById("roll").value;
 
-// ===============================
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+  const resultBox = document.getElementById("result");
 
-  const name = document.getElementById("input-name").value;
-  const mobile = document.getElementById("input-mobile").value;
-  const zone = document.getElementById("select-zone").value;
-  const roll = document.getElementById("input-roll").value;
-
-  if (mobile.length !== 10 || roll.length !== 16) {
-    alert("Invalid details");
-    return;
-  }
-
-  if (qualifiedRollNumbers.includes(roll)) {
-
-    resultBox.innerHTML = `
-      <h2 style="color:green;">✅ SHORTLISTED</h2>
-      <p><b>${name}</b>, you are qualified for DV & Medical</p>
-      <p>Roll: ${roll}</p>
-      <p>Zone: ${zone}</p>
-    `;
-
-    fireConfetti();
-
+  if(validRollNumbers.includes(roll)) {
+    resultBox.innerHTML = "🎉 Congratulations! You are SHORTLISTED";
+    resultBox.style.color = "green";
   } else {
-
-    resultBox.innerHTML = `
-      <h2 style="color:red;">❌ NOT QUALIFIED</h2>
-      <p>Better luck next time</p>
-    `;
+    resultBox.innerHTML = "❌ Sorry! You are NOT QUALIFIED";
+    resultBox.style.color = "red";
   }
 
-  sendToGoogleSheet(name, mobile, zone, roll);
-});
-
-// ===============================
-// CONFETTI
-// ===============================
-function fireConfetti() {
-  confetti({
-    particleCount: 100,
-    spread: 70
-  });
-}
-
-// ===============================
-// GOOGLE SHEET
-// ===============================
-function sendToGoogleSheet(name, mobile, zone, roll) {
-
-  fetch("https://script.google.com/macros/s/AKfycbxgzH4nE0NMtDTm8QHJTTVbUiO19EPj0e8Fj2GcotYpi5kqBDefAV5eCXY5WYbi5K4axQ/exec", {
+  // 🔥 Google Sheet Save
+  fetch("https://script.google.com/macros/library/d/1ml1GnW5gs0k3kC4EOKp7rgA1HsXHjaeRErArKmcFUC_BqF1AiWL77G-U/1", {
     method: "POST",
     body: JSON.stringify({
-      name, mobile, zone, roll
-    }),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(() => console.log("Saved"))
-  .catch(err => console.log(err));
+      name: name,
+      mobile: mobile,
+      zone: zone,
+      roll: roll
+    })
+  });
 }
