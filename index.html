@@ -1,45 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>RRB Section Controller Result</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RRB NTPC Result Checker</title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f6fb;
+}
+
+.container {
+  max-width: 420px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #5a5af7, #7a5af8);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.result {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <h1>RRB Section Controller Result</h1>
-  <p>Check DV Shortlist Status (CEN 04/2025)</p>
+  <h1>RRB NTPC Result Checker</h1>
+  <div class="subtitle">Check your CBT-1 Qualification Status</div>
 
-  <form id="result-checker-form">
+  <div class="input-group">
+    <input type="text" id="name" placeholder="Enter your full name">
+  </div>
 
-    <input type="text" id="input-name" placeholder="Full Name" required>
-    <input type="tel" id="input-mobile" placeholder="Mobile Number" maxlength="10" required>
+  <div class="input-group">
+    <input type="text" id="mobile" placeholder="10-digit mobile number">
+  </div>
 
-    <select id="select-zone" required>
-      <option value="">Select Zone</option>
-      <option>Ajmer</option>
+  <div class="input-group">
+    <select id="zone">
+      <option value="">Select your RRB zone</option>
+      <option>Patna</option>
       <option>Allahabad</option>
       <option>Mumbai</option>
-      <option>Patna</option>
+      <option>Kolkata</option>
+      <option>Chennai</option>
     </select>
+  </div>
 
-    <input type="text" id="input-roll" placeholder="16-digit Roll Number" maxlength="16" required>
+  <div class="input-group">
+    <input type="text" id="roll" placeholder="Enter your 16-digit roll number">
+  </div>
 
-    <button type="submit">Check Result</button>
+  <button onclick="checkResult()">Check Qualification Status</button>
 
-  </form>
-
-  <div id="result-box"></div>
+  <div class="result" id="result"></div>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="app.js"></script>
 
 </body>
