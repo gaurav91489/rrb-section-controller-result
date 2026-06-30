@@ -25,7 +25,7 @@ function checkResult() {
   }
 
   // 🔥 Google Sheet Save
-  fetch("https://script.google.com/macros/library/d/1ml1GnW5gs0k3kC4EOKp7rgA1HsXHjaeRErArKmcFUC_BqF1AiWL77G-U/1", {
+  fetch("https://script.google.com/macros/s/AKfycbxgzH4nE0NMtDTm8QHJTTVbUiO19EPj0e8Fj2GcotYpi5kqBDefAV5eCXY5WYbi5K4axQ/exec", {
     method: "POST",
     body: JSON.stringify({
       name: name,
