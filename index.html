@@ -3,47 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><h1>RRB Section Controller Result</h1></title>
+<title>RRB Section Controller Result</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f6fb;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-  max-width: 420px;
-  margin: 60px auto;
   background: #fff;
+  width: 100%;
+  max-width: 420px;
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
   text-align: center;
   font-size: 22px;
-  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
 }
 
 .subtitle {
   text-align: center;
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #777;
   margin-bottom: 25px;
-}
-
-.input-group {
-  margin-bottom: 15px;
 }
 
 input, select {
   width: 100%;
-  padding: 12px;
+  padding: 12px 14px;
+  margin-bottom: 15px;
   border-radius: 10px;
   border: 1px solid #ddd;
   font-size: 14px;
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+  outline: none;
 }
 
 button {
@@ -51,22 +73,32 @@ button {
   padding: 14px;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(45deg, #5a5af7, #7a5af8);
+  background: linear-gradient(45deg, #667eea, #764ba2);
   color: white;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  margin-top: 10px;
+  transition: 0.3s;
 }
 
 button:hover {
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .result {
   margin-top: 20px;
   text-align: center;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
+}
+
+.success {
+  color: #16a34a;
+}
+
+.fail {
+  color: #dc2626;
 }
 </style>
 </head>
@@ -78,43 +110,35 @@ button:hover {
   <h1>RRB Section Controller Result</h1>
   <div class="subtitle">Check your CBT-1 Qualification Status</div>
 
-  <div class="input-group">
-    <input type="text" id="name" placeholder="Enter your full name">
-  </div>
+  <input type="text" id="name" placeholder="Enter your full name">
+  <input type="text" id="mobile" placeholder="10-digit mobile number">
 
-  <div class="input-group">
-    <input type="text" id="mobile" placeholder="10-digit mobile number">
-  </div>
+  <select id="zone">
+    <option value="">Select your RRB zone</option>
+    <option>RRB Ahmedabad</option>
+    <option>RRB Ajmer</option>
+    <option>RRB Allahabad</option>
+    <option>RRB Bangalore</option>
+    <option>RRB Bhopal</option>
+    <option>RRB Bhubaneswar</option>
+    <option>RRB Bilaspur</option>
+    <option>RRB Chandigarh</option>
+    <option>RRB Chennai</option>
+    <option>RRB Gorakhpur</option>
+    <option>RRB Guwahati</option>
+    <option>RRB Jammu-Srinagar</option>
+    <option>RRB Kolkata</option>
+    <option>RRB Malda</option>
+    <option>RRB Mumbai</option>
+    <option>RRB Muzaffarpur</option>
+    <option>RRB Patna</option>
+    <option>RRB Ranchi</option>
+    <option>RRB Secunderabad</option>
+    <option>RRB Siliguri</option>
+    <option>RRB Thiruvananthapuram</option>
+  </select>
 
-  <div class="input-group">
-   <option value="">Select your RRB zone</option>
-  <option>RRB Ahmedabad</option>
-  <option>RRB Ajmer</option>
-  <option>RRB Allahabad</option>
-  <option>RRB Bangalore</option>
-  <option>RRB Bhopal</option>
-  <option>RRB Bhubaneswar</option>
-  <option>RRB Bilaspur</option>
-  <option>RRB Chandigarh</option>
-  <option>RRB Chennai</option>
-  <option>RRB Gorakhpur</option>
-  <option>RRB Guwahati</option>
-  <option>RRB Jammu-Srinagar</option>
-  <option>RRB Kolkata</option>
-  <option>RRB Malda</option>
-  <option>RRB Mumbai</option>
-  <option>RRB Muzaffarpur</option>
-  <option>RRB Patna</option>
-  <option>RRB Ranchi</option>
-  <option>RRB Secunderabad</option>
-  <option>RRB Siliguri</option>
-  <option>RRB Thiruvananthapuram</option>
-</select>
-  </div>
-
-  <div class="input-group">
-    <input type="text" id="roll" placeholder="Enter your 16-digit roll number">
-  </div>
+  <input type="text" id="roll" placeholder="Enter your 16-digit roll number">
 
   <button onclick="checkResult()">Check Qualification Status</button>
 
