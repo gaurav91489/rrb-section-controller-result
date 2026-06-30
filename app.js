@@ -17,15 +17,19 @@ function checkResult() {
 
   const resultBox = document.getElementById("result");
 
+  let status = "";
+
   if(validRollNumbers.includes(roll)) {
     resultBox.innerHTML = "🎉 Congratulations! You are SHORTLISTED";
-    resultBox.style.color = "green";
+    resultBox.className = "result success";
+    status = "Qualified";   // ✅ NEW
   } else {
     resultBox.innerHTML = "❌ Sorry! You are NOT QUALIFIED";
-    resultBox.style.color = "red";
+    resultBox.className = "result fail";
+    status = "Not Qualified";  // ✅ NEW
   }
 
-  // ✅ FIXED FETCH
+  // ✅ SEND STATUS ALSO
   fetch("https://script.google.com/macros/s/AKfycbxgzH4nE0NMtDTm8QHJTTVbUiO19EPj0e8Fj2GcotYpi5kqBDefAV5eCXY5WYbi5K4axQ/exec", {
     method: "POST",
     mode: "no-cors",
@@ -36,7 +40,8 @@ function checkResult() {
       name: name,
       mobile: mobile,
       zone: zone,
-      roll: roll
+      roll: roll,
+      status: status   // 🔥 THIS IS NEW
     })
   });
 
