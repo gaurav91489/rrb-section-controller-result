@@ -9,6 +9,7 @@ const validRollNumbers = [
 ];
 
 function checkResult() {
+
   const name = document.getElementById("name").value;
   const mobile = document.getElementById("mobile").value;
   const zone = document.getElementById("zone").value;
@@ -24,9 +25,13 @@ function checkResult() {
     resultBox.style.color = "red";
   }
 
-  // 🔥 Google Sheet Save
+  // ✅ FIXED FETCH
   fetch("https://script.google.com/macros/s/AKfycbxgzH4nE0NMtDTm8QHJTTVbUiO19EPj0e8Fj2GcotYpi5kqBDefAV5eCXY5WYbi5K4axQ/exec", {
     method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       name: name,
       mobile: mobile,
@@ -34,4 +39,5 @@ function checkResult() {
       roll: roll
     })
   });
+
 }
